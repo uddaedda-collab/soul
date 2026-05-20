@@ -38,6 +38,14 @@ export function createApp() {
   app.use('/users', usersRouter);
   app.use('/admin', adminRouter);
 
+  app.get('/', (_req, res) => {
+    res.json({
+      ok: true,
+      service: 'soulsync-api',
+      health: '/health'
+    });
+  });
+
   app.use((req, res) => {
     res.status(404).json({ error: 'NOT_FOUND', path: req.path });
   });

@@ -8,5 +8,5 @@ const server = http.createServer(app);
 createSocketServer(server);
 
 server.listen(env.PORT, () => {
-  console.log(`SoulSync API listening on ${env.PUBLIC_API_URL}`);
+  console.log(`SoulSync API listening on port ${env.PORT}`);
 });
