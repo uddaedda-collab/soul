@@ -41,6 +41,8 @@ Last updated: 2026-05-20
   - root `npm run build:api` builds the backend.
   - `render.yaml` defines a free `soulsync-api` Node web service.
   - `docs/RENDER_DEPLOY.md` records the Render settings and free-plan note.
+- GitHub remote is `https://github.com/uddaedda-collab/soul.git` on branch `master`.
+- Render reported the service live. Mobile local `.env` now points API and Socket.IO traffic to `https://soulsync-api.onrender.com`.
 
 ## Current Status
 
@@ -112,6 +114,7 @@ Last known result: all passed.
 - Android native Firebase plugins automatically activate after adding `apps/mobile/google-services.json`.
 - Email auth and Firebase Storage upload require both `apps/mobile/.env` Firebase public values and `apps/mobile/google-services.json`.
 - Native Android run still needs local Java/JDK plus Android SDK/ADB.
+- Render free backend uses in-memory fallback until Firebase Admin env vars are configured, so rooms/messages can reset after deploy/restart.
 
 ## Next Work Queue
 

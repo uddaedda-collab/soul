@@ -45,3 +45,14 @@ AGORA_APP_ID=
 ## Free Plan Note
 
 Render Free web services may sleep after inactivity. The first request after sleep can take some time to wake up.
+
+## Mobile App Wiring
+
+For the deployed free backend, set mobile env values to:
+
+```text
+EXPO_PUBLIC_API_URL=https://soulsync-api.onrender.com
+EXPO_PUBLIC_SOCKET_URL=https://soulsync-api.onrender.com
+```
+
+If Render uses a different service URL, replace both values with the exact Render URL.

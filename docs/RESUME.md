@@ -36,6 +36,13 @@ Fill real values locally:
 - EAS project id in `apps/mobile/.env` as `EXPO_PUBLIC_EAS_PROJECT_ID` if testing Expo push tokens.
 - Admin token in `apps/admin/.env`.
 
+For the current free Render backend, mobile API values are:
+
+```text
+EXPO_PUBLIC_API_URL=https://soulsync-api.onrender.com
+EXPO_PUBLIC_SOCKET_URL=https://soulsync-api.onrender.com
+```
+
 Never paste real secrets into chat.
 
 Current Android blocker in this workspace:
