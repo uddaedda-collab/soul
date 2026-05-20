@@ -20,6 +20,14 @@ Then commit to Git or push to GitHub.
 
 ## Latest Checkpoint
 
+2026-05-20 later:
+
+- `npm.cmd run typecheck` passed.
+- `npm.cmd test --workspace services/api` passed, including backend media upload and Socket.IO integration coverage.
+- `npm.cmd run build --workspace services/api` passed.
+- `npm.cmd run build --workspace apps/admin` passed.
+- Added free backend media upload fallback; files are temporary on Render free instances.
+
 2026-05-20:
 
 - `npm.cmd run typecheck` passed.

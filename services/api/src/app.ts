@@ -1,6 +1,7 @@
 import compression from 'compression';
 import cors from 'cors';
 import express from 'express';
+import path from 'node:path';
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -21,7 +22,7 @@ export function createApp() {
   app.use(helmet());
   app.use(cors({ origin: corsOrigins, credentials: true }));
   app.use(compression());
-  app.use(express.json({ limit: '2mb' }));
+  app.use(express.json({ limit: '25mb' }));
   app.use(morgan(isProduction ? 'combined' : 'dev'));
   app.use(rateLimit({
     windowMs: 60_000,
@@ -31,6 +32,10 @@ export function createApp() {
   }));
 
   app.use('/health', healthRouter);
+  app.use('/uploads', express.static(path.join(process.cwd(), 'uploads'), {
+    fallthrough: false,
+    maxAge: isProduction ? '1h' : 0
+  }));
   app.use('/auth', authRouter);
   app.use('/rooms', roomsRouter);
   app.use('/media', mediaRouter);

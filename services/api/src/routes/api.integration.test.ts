@@ -61,6 +61,21 @@ describe('api integration', () => {
     });
     expect(history.messages).toEqual([]);
 
+    const upload = await api<{ media: { roomId: string; downloadUrl: string; mimeType: string; sizeBytes: number } }>('/media/upload', {
+      token,
+      method: 'POST',
+      body: {
+        roomId: created.room.id,
+        name: 'note.txt',
+        mimeType: 'text/plain',
+        dataBase64: Buffer.from('hello from SoulSync').toString('base64')
+      }
+    });
+    expect(upload.media.roomId).toBe(created.room.id);
+    expect(upload.media.mimeType).toBe('text/plain');
+    expect(upload.media.sizeBytes).toBeGreaterThan(0);
+    expect(upload.media.downloadUrl).toContain('/uploads/');
+
     const report = await api<{ report: { status: string; roomId: string } }>('/users/reports', {
       token,
       method: 'POST',

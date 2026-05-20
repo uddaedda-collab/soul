@@ -43,6 +43,21 @@ Last updated: 2026-05-20
   - `docs/RENDER_DEPLOY.md` records the Render settings and free-plan note.
 - GitHub remote is `https://github.com/uddaedda-collab/soul.git` on branch `master`.
 - Render reported the service live. Mobile local `.env` now points API and Socket.IO traffic to `https://soulsync-api.onrender.com`.
+- Added free MVP media upload fallback:
+  - Backend `POST /media/upload` accepts base64 uploads up to 20 MB, stores them under `uploads/`, and registers shared media.
+  - API serves uploaded files from `/uploads`.
+  - Mobile attachment upload uses Firebase Storage when configured, otherwise falls back to backend upload.
+  - Upload route is covered by API integration tests.
+
+## Completion Estimate
+
+- Overall: 73%
+- Backend/API/Socket sync: 88%
+- Admin dashboard: 70%
+- Mobile app UI/flows: 72%
+- Cloud deployment: 65%
+- Android device/APK testing: 20%
+- Production Firebase/Agora hardening: 20%
 
 ## Current Status
 
@@ -70,6 +85,7 @@ SoulSync is a React Native + Node full-stack watch party app foundation for Andr
   - Host/shared control modes.
   - Encrypted chat message transport and history.
   - Media registration route.
+  - Free backend media upload fallback for private MVP testing.
   - User profile, push token, block/unblock, and report routes.
   - Firebase Admin integration with in-memory fallback.
   - Room invite notification route.
@@ -80,7 +96,7 @@ SoulSync is a React Native + Node full-stack watch party app foundation for Andr
   - Safety reports list.
   - Vite build uses `--configLoader native` for Windows sandbox compatibility.
 - Test coverage:
-  - HTTP integration coverage for profile, rooms, message history, reports.
+  - HTTP integration coverage for profile, rooms, message history, backend upload, reports.
   - Socket.IO integration coverage for live room join/source/sync/chat/typing/reaction/call/leave.
 - Infra/docs:
   - Firebase Firestore, Storage, and Realtime Database rules.
@@ -115,6 +131,7 @@ Last known result: all passed.
 - Email auth and Firebase Storage upload require both `apps/mobile/.env` Firebase public values and `apps/mobile/google-services.json`.
 - Native Android run still needs local Java/JDK plus Android SDK/ADB.
 - Render free backend uses in-memory fallback until Firebase Admin env vars are configured, so rooms/messages can reset after deploy/restart.
+- Render free filesystem is ephemeral, so backend-uploaded files can reset after deploy/restart. This is acceptable for private free MVP testing; durable storage still needs Firebase Storage or another persistent object store.
 
 ## Next Work Queue
 

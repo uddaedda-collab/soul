@@ -46,6 +46,8 @@ AGORA_APP_ID=
 
 Render Free web services may sleep after inactivity. The first request after sleep can take some time to wake up.
 
+The free MVP upload fallback stores files on the Render service filesystem. This is temporary storage: files can disappear after deploys, restarts, or instance replacement. Use Firebase Storage later for durable media.
+
 ## Mobile App Wiring
 
 For the deployed free backend, set mobile env values to:
