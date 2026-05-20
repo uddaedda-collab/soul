@@ -1,0 +1,17 @@
+node_modules
+.expo
+.expo-shared
+dist
+build
+coverage
+.env
+.env.*
+!.env.example
+*.log
+*.keystore
+android/app/build
+ios/Pods
+firebase-service-account.json
+service-account.json
+google-services.json
+GoogleService-Info.plist

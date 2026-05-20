@@ -1,0 +1,27 @@
+{
+  "name": "soulsync",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Long-distance Android watch party app with realtime sync, calls, chat, and admin tools.",
+  "workspaces": [
+    "apps/mobile",
+    "apps/admin",
+    "services/api"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace services/api",
+    "dev:api": "npm run dev --workspace services/api",
+    "dev:admin": "npm run dev --workspace apps/admin",
+    "dev:mobile": "npm run start --workspace apps/mobile",
+    "build": "npm run build --workspaces --if-present",
+    "build:api": "npm run build --workspace services/api",
+    "lint": "npm run lint --workspaces --if-present",
+    "start": "npm run start --workspace services/api",
+    "start:api": "npm run start --workspace services/api",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

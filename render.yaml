@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: soulsync-api
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build:api
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PUBLIC_API_URL
+        value: https://soulsync-api.onrender.com
+      - key: CORS_ORIGINS
+        value: http://localhost:5173,http://localhost:19006,https://soulsync-api.onrender.com
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ROOM_CODE_ALPHABET
+        value: ABCDEFGHJKLMNPQRSTUVWXYZ23456789
